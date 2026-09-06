@@ -1,26 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Pulse Neo-Brutalist Palette */
+  --pulse-cream: #FAF8F5;
+  --pulse-black: #000000;
+  --pulse-yellow: #FFD152;
+  --pulse-pink: #FF6B6B;
+  --pulse-purple: #B8A9FF;
+  --pulse-green: #2ED573;
+  --pulse-white: #FFFFFF;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: 'Archivo Black', 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--pulse-cream);
+  color: var(--pulse-black);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Background grid patterns from Pulse */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-dot-banner {
+  background-color: var(--pulse-yellow);
+  background-image: radial-gradient(var(--pulse-black) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+/* Pulse Brutal Tokens */
+.pulse-card {
+  border: 3px solid #000000 !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+  border-radius: 0 !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.pulse-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #000000 !important;
+}
+
+.pulse-btn {
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  border-radius: 0 !important;
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.pulse-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px #000000 !important;
+}
+
+.pulse-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000000 !important;
+}
+
+.pulse-pill {
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse-chip {
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  cursor: pointer;
+}
+
+.pulse-chip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #000000;
+}
+
+/* Marquee continuous scroll */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 25s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Leaflet maps neo-brutalism */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0 !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+  z-index: 10;
 }
