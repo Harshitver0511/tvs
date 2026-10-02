@@ -16,6 +16,7 @@ export const RATE_LIMIT_RULES: Record<string, RateLimitConfig> = {
   "admin:users": { maxRequests: 30, windowSeconds: 60 }, // role changes / staff invites
   "docs:ocr": { maxRequests: 6, windowSeconds: 60 }, // CPU-heavy Tesseract OCR
   "privacy:erasure": { maxRequests: 3, windowSeconds: 3600 }, // DPDP erasure requests
+  "assistant:chat": { maxRequests: 30, windowSeconds: 60 }, // 30 AI queries per minute
   "default": { maxRequests: 60, windowSeconds: 60 }, // 60 general requests per minute
 };
 

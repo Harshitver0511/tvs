@@ -18,6 +18,7 @@ function rateRuleFor(pathname: string, method: string): RateRule | null {
   if (pathname === "/api/erasure") return "privacy:erasure";
   if (pathname === "/api/ocr") return "docs:ocr";
   if (pathname === "/api/auth/session") return "auth:session";
+  if (pathname === "/api/assistant") return "assistant:chat";
   if (pathname.startsWith("/api/admin/")) return "admin:users";
   return null;
 }
