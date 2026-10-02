@@ -1,0 +1,516 @@
+{
+  "nav": {
+    "tagline": "Kisan Loan Hub",
+    "homeAria": "TVS Credit home",
+    "mainNav": "Main navigation",
+    "more": "More",
+    "accountMenu": "Account menu",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "applyNow": "Apply now",
+    "toggleMenu": "Open or close menu",
+    "switchLanguage": "Switch language to {language}",
+    "lowData": "Low data",
+    "lowDataHint": "Saves mobile data: hides satellite photos and loads the map only when you tap it",
+    "links": {
+      "home": "Home",
+      "apply": "Apply for loan",
+      "assistant": "TVS Sahayak",
+      "consent": "My privacy & consents",
+      "deck": "About the project",
+      "staff": "Staff desk",
+      "scoring": "Satellite scoring",
+      "monitoring": "Risk radar",
+      "admin": "Staff access"
+    },
+    "desc": {
+      "home": "Loan products",
+      "apply": "Mark your field and apply",
+      "assistant": "Ask questions in Hindi or English, by voice or text",
+      "consent": "See, withdraw consent, or delete your data",
+      "deck": "How the platform works",
+      "staff": "Underwriting queue and audit trail",
+      "scoring": "Satellite and SHAP analysis",
+      "monitoring": "District early warnings",
+      "admin": "Invite staff and assign roles"
+    },
+    "roles": {
+      "farmer": "Farmer",
+      "field_officer": "Field officer",
+      "credit_officer": "Credit officer",
+      "admin": "Admin"
+    }
+  },
+  "pwa": {
+    "offlineBanner": "You are offline. Your form is saved on this phone.",
+    "dismiss": "Dismiss"
+  },
+  "push": {
+    "enable": "Turn on notifications",
+    "disable": "Turn off notifications",
+    "denied": "Notifications are blocked. Allow them in your browser settings.",
+    "unavailable": "Notifications work after installing the app (or in Chrome on Android).",
+    "error": "Could not turn on notifications. Please try again.",
+    "promptTitle": "Get updates on your loan",
+    "promptBody": "We will notify you when your decision is ready and 7 days before each EMI."
+  },
+  "voice": {
+    "speak": "Speak",
+    "listening": "Listening…",
+    "speakField": "Speak {field}",
+    "listen": "Listen",
+    "stop": "Stop",
+    "notAllowed": "Microphone permission was denied.",
+    "noSpeech": "Didn't hear anything. Tap the mic and speak again.",
+    "network": "Voice needs an internet connection.",
+    "notUnderstood": "Couldn't understand \"{heard}\". Please try again or type it.",
+    "heard": "Heard: \"{heard}\""
+  },
+  "plotMap": {
+    "pointsMarked": "{count, plural, one {# corner marked} other {# corners marked}}",
+    "calculate": "Calculate area",
+    "recenter": "Go to my location",
+    "aroundMe": "Mark a field around me",
+    "untangle": "Fix crossing lines",
+    "undo": "Undo last corner",
+    "clear": "Clear",
+    "youAreHere": "You are here",
+    "corner": "Corner {n}",
+    "area": "Area",
+    "acres": "{value} acres",
+    "declaredVsMeasured": "Your acres vs measured",
+    "declared": "you said",
+    "measured": "measured",
+    "layer": {
+      "toMap": "Show simple map (less data)",
+      "toSatellite": "Show satellite photo"
+    },
+    "walk": {
+      "start": "Walk my field",
+      "stop": "Finish walk",
+      "active": "Walk slowly along the edge of your field. Corners recorded: {count}",
+      "denied": "Location permission is needed to walk the field.",
+      "unavailable": "This phone cannot share its location.",
+      "tooFew": "Need at least 3 corners. Walk the whole edge and try again."
+    },
+    "hint": {
+      "walking": "Keep walking along the field edge, then tap Finish walk",
+      "enclosed": "Field marked. Tap the map to add more corners.",
+      "tap": "Tap each corner of your field ({count}/3 minimum)",
+      "calculate": "{count} corners marked. Tap Calculate area."
+    },
+    "mismatch": {
+      "title": "Area differs by {pct}%",
+      "body": "The marked field differs from the acres you entered by more than 20%. A field officer may verify it."
+    },
+    "ok": {
+      "title": "Field boundary marked",
+      "body": "Measured area: {value} acres."
+    },
+    "drawing": {
+      "title": "Mark your field",
+      "body": "Tap each corner on the map, or walk the edge with GPS."
+    }
+  },
+  "crops": {
+    "Cotton (Bt)": "Cotton (Bt)",
+    "Wheat (Sharbati)": "Wheat (Sharbati)",
+    "Paddy / Rice (Samba)": "Paddy / Rice (Samba)",
+    "Soybean (JS-335)": "Soybean (JS-335)",
+    "Sugarcane (Co 0238)": "Sugarcane (Co 0238)"
+  },
+  "irrigation": {
+    "Borewell & Rainfed": "Borewell + rain",
+    "Perennial Canal": "Canal (all year)",
+    "Drip Micro-Irrigation": "Drip / sprinkler",
+    "Strictly Rainfed": "Rain only"
+  },
+  "apply": {
+    "title": "Farm loan application",
+    "subtitle": "Mark your field, tell us about your crop, and get a decision in minutes. You can speak instead of typing.",
+    "draftRestored": "Your saved form was restored from this phone.",
+    "gps": {
+      "ready": "Location found",
+      "detecting": "Finding your location…",
+      "enable": "Use my location"
+    },
+    "steps": {
+      "label": "Application steps",
+      "s1": "Your field",
+      "s1desc": "Details and boundary",
+      "s2": "Satellite check",
+      "s2desc": "Crop, rain, soil, mandi",
+      "s3": "Review & submit",
+      "s3desc": "Consent and decision"
+    },
+    "profile": {
+      "title": "Farmer & farm details",
+      "signedInAs": "Signed in as {name}",
+      "name": "Full name",
+      "phone": "Mobile number",
+      "aadhaar": "Aadhaar (last 4 digits only)",
+      "aadhaarHint": "We store only the last 4 digits.",
+      "pincode": "Pincode",
+      "resolving": "finding district…",
+      "village": "Village",
+      "district": "District",
+      "state": "State",
+      "crop": "Main crop",
+      "irrigation": "Water source",
+      "amount": "Loan amount needed (₹)",
+      "acres": "Your land (acres)"
+    },
+    "doc": {
+      "title": "7/12 or Khatauni land record",
+      "hint": "Optional: a photo of your land record helps us verify faster.",
+      "match": "{pct}% match",
+      "upload": "Take or upload a photo",
+      "reading": "Reading the document…",
+      "done": "Document read ✓",
+      "needsNetwork": "Needs internet — add it later"
+    },
+    "plot": {
+      "title": "Mark your field on the map",
+      "subtitle": "Tap the corners, or walk along the edge of your field with GPS.",
+      "lowDataNote": "Low-data mode is on. The map uses mobile data, so it opens only when you ask.",
+      "pointsReady": "{count} corners already marked from your location.",
+      "showMap": "Show map to mark my field",
+      "next": "Next: satellite check"
+    },
+    "scan": {
+      "title": "Checking your field from satellite",
+      "s1": "Crop health from Sentinel-2 satellite",
+      "s2": "Rainfall in the last 90 days (NASA POWER)",
+      "s3": "Soil quality (ISRIC SoilGrids)",
+      "s4": "Nearest mandi and crop price",
+      "s5": "Credit score and the reasons behind it",
+      "s6": "EMIs matched to your harvest months"
+    },
+    "review": {
+      "title": "Review and submit",
+      "applicant": "Applicant",
+      "area": "Field area",
+      "acres": "{value} acres",
+      "crop": "Crop",
+      "amount": "Loan amount"
+    },
+    "consent": {
+      "title": "Your consent (DPDP Act 2023)",
+      "ekyc": {
+        "title": "1. Identity check (eKYC)",
+        "body": "I allow TVS Credit to verify my identity and land records through DigiLocker / Aadhaar (sandbox) for KYC."
+      },
+      "satellite_analysis": {
+        "title": "2. Satellite and weather check of my field",
+        "body": "I allow use of satellite crop health, rainfall and soil data for the field I marked."
+      },
+      "mandi_financial": {
+        "title": "3. Mandi prices and repayment plan",
+        "body": "I allow use of local mandi prices and other indicators to plan EMIs around my harvest."
+      },
+      "withdraw": "You can withdraw consent or delete your data any time in <link>My privacy & consents</link>.",
+      "privacyNotice": "Privacy notice"
+    },
+    "submit": {
+      "button": "Give consent and get my decision",
+      "offlineButton": "Save and send when online",
+      "waiting": "No internet. Your application will be sent automatically when the network returns."
+    },
+    "queued": {
+      "title": "Saved — will send automatically",
+      "body": "You are offline. Your application is saved on this phone and will be submitted as soon as the network returns. Keep the app installed; you will get a notification."
+    },
+    "errors": {
+      "needPlot": "Mark at least 3 corners of your field on the map first.",
+      "needNamePhone": "Enter your full name and a 10-digit mobile number.",
+      "consents": "All three consents are needed to process the loan.",
+      "submit": "Could not submit the application. Please check the details and try again.",
+      "ocr": "Could not read the document. You can continue without it."
+    },
+    "privacy": {
+      "title": "Privacy notice (DPDP Act 2023)",
+      "close": "Close",
+      "fiduciary": {
+        "title": "Who we are",
+        "body": "TVS Credit Services Limited, Jayalakshmi Estates, 29 Haddows Road, Chennai 600006."
+      },
+      "purpose": {
+        "title": "Why we use your data",
+        "body": "To assess your loan, set the loan amount, plan harvest-linked EMIs, and follow RBI Digital Lending rules."
+      },
+      "rights": {
+        "title": "Your rights",
+        "body": "See a summary of your data, correct it, delete it, raise a complaint, and nominate someone."
+      },
+      "dpo": {
+        "title": "Data Protection Officer",
+        "body": "Email: dpo@tvscredit.com • Toll-free: 1800-425-4500"
+      },
+      "appeal": {
+        "title": "If not resolved",
+        "body": "You can complain to the Data Protection Board of India."
+      }
+    }
+  },
+  "landing": {
+    "ticker": {
+      "t1": "Loans for tractors, farm equipment and crops",
+      "t2": "Field checked by satellite — no land papers needed to start",
+      "t3": "EMIs after your harvest",
+      "t4": "Apply in Hindi or English, by voice",
+      "t5": "Works on low network and offline"
+    },
+    "badges": {
+      "edition": "2026 edition",
+      "inclusion": "Made for rural Bharat"
+    },
+    "hero": {
+      "line1": "Know your crop.",
+      "line2a": "Empower",
+      "line2b": "farmers.",
+      "line3": "With satellite AI.",
+      "body": "TVS Credit checks your field from satellite, looks at rainfall and mandi prices, and plans your EMIs around your harvest — with very little paperwork."
+    },
+    "cta": {
+      "apply": "Apply for a farm loan",
+      "deck": "How it works"
+    },
+    "products": {
+      "title": "Loan products",
+      "body": "Tractor loans, harvest-linked repayment and satellite-based loan limits — made for farming families."
+    },
+    "filters": {
+      "all": "All",
+      "machinery": "🚜 Tractor & machinery",
+      "satellite": "🛰️ Satellite AI",
+      "harvest": "🌾 Harvest credit",
+      "warnings": "🚨 Early warnings"
+    },
+    "search": "Search loans — tractor, crop, solar pump…",
+    "explore": "Learn more",
+    "noResults": "No loan products match your search.",
+    "cards": {
+      "tractor": {
+        "badge": "35–55 HP",
+        "title": "Tractor loan",
+        "desc": "Quick approval for new and used tractors. Pay your big EMIs after harvest."
+      },
+      "satellite": {
+        "badge": "Sentinel-2",
+        "title": "Satellite field check",
+        "desc": "We check your crop health from satellite, so you need very little paperwork."
+      },
+      "harvest": {
+        "badge": "After mandi sale",
+        "title": "Harvest-linked EMIs",
+        "desc": "Small EMIs during sowing, bigger ones after you sell your crop."
+      },
+      "sahayak": {
+        "badge": "Voice + Hindi",
+        "title": "TVS Sahayak helper",
+        "desc": "Ask about eligibility, documents and EMIs in Hindi or English — by voice or text."
+      },
+      "bike": {
+        "badge": "Fast payout",
+        "title": "Two-wheeler for farmers",
+        "desc": "Vehicle loans for farmers and small agri-businesses with minimal documents."
+      },
+      "solar": {
+        "badge": "PM-KUSUM",
+        "title": "Solar pump & drip",
+        "desc": "Loans for drip irrigation and subsidised solar water pumps."
+      },
+      "warnings": {
+        "badge": "District alerts",
+        "title": "Weather early warnings",
+        "desc": "Satellite drought and rainfall alerts help us support you before trouble starts."
+      },
+      "gold": {
+        "badge": "Same-day",
+        "title": "Gold agri-advance",
+        "desc": "Low-interest money against gold for seeds, fertiliser and urgent farm needs."
+      }
+    },
+    "radar": {
+      "title": "Weather & crop early warnings",
+      "body": "We watch rainfall, crop health and mandi prices in your district so we can offer help — like rescheduling EMIs — early.",
+      "cta": "See how it works"
+    },
+    "footer": "Smart Lending Decision Hub · EPIC 8 case study"
+  },
+  "login": {
+    "title": "Sign in to TVS Credit",
+    "subtitle": "Farmers: apply and track your loan. Staff: use your work account.",
+    "tabs": {
+      "farmer": "Farmer",
+      "staff": "Staff"
+    },
+    "email": "Email address",
+    "workEmail": "Work email",
+    "password": "Password",
+    "newAccount": "I am new — create my account",
+    "staffNote": "Staff accounts are created by the admin. Use the invite link in your email to set your password.",
+    "forgot": "Forgot password?",
+    "signIn": "Sign in",
+    "createAccount": "Create account",
+    "working": "Please wait…",
+    "signOut": "Sign out",
+    "checkEmail": "Account created. Please open the link we emailed you to confirm, then sign in.",
+    "resetSent": "If an account exists for {email}, we have emailed a link to set a new password.",
+    "needFarmer": "Please sign in or create an account to apply for a loan.",
+    "needStaff": "This page is for TVS Credit staff. Sign in with your work account.",
+    "denied": {
+      "title": "Your account cannot open this page",
+      "body": "Staff roles are given by the TVS Credit admin. Ask the admin for access, or sign in with another account."
+    },
+    "errors": {
+      "invalid": "Wrong email or password.",
+      "unconfirmed": "Please confirm your email first — open the link we sent you.",
+      "exists": "An account with this email already exists. Sign in instead.",
+      "weakPassword": "Password must be at least 6 characters.",
+      "rateLimit": "Too many attempts. Please wait a minute and try again.",
+      "network": "No internet connection. Please try again when you are online.",
+      "emailFirst": "Enter your email address first, then tap “Forgot password?”.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "setPassword": {
+    "invite": "Staff invitation",
+    "reset": "Password reset",
+    "activate": "Activate your account",
+    "setNew": "Set a new password",
+    "verifying": "Checking the link…",
+    "back": "Back to sign in",
+    "newPassword": "New password",
+    "confirm": "Confirm password",
+    "save": "Save password and continue",
+    "saving": "Saving…",
+    "tooShort": "Password must be at least 8 characters.",
+    "mismatch": "The two passwords do not match.",
+    "badLink": "This link is invalid or has expired. Ask for a new invite or request another reset email."
+  },
+  "consentPortal": {
+    "title": "My privacy & consents",
+    "subtitle": "See what you have agreed to, withdraw a consent, or delete your data (Digital Personal Data Protection Act, 2023).",
+    "account": "Signed-in account",
+    "status": {
+      "active": "Consent given",
+      "withdrawn": "Withdrawn",
+      "none": "Not given yet"
+    },
+    "retention": "Kept for",
+    "grantedAt": "Given on",
+    "revokedAt": "Withdrawn on",
+    "withdraw": "Withdraw consent",
+    "revokeConfirm": "Withdrawing this may stop your loan from being processed. Continue?",
+    "yesWithdraw": "Yes, withdraw",
+    "cancel": "Cancel",
+    "revoked": "Consent withdrawn: {purpose}.",
+    "purposes": {
+      "ekyc": {
+        "title": "Identity check (eKYC)",
+        "body": "Checking your name, identity and address through DigiLocker / Aadhaar reference, as required for KYC.",
+        "retention": "5 years after the loan is repaid (RBI / PMLA rules)"
+      },
+      "satellite_analysis": {
+        "title": "Satellite and weather check",
+        "body": "Satellite crop health, rainfall and soil data for the field you marked, used to assess your loan.",
+        "retention": "Loan period plus one harvest season"
+      },
+      "mandi_financial": {
+        "title": "Mandi prices and EMI plan",
+        "body": "Local mandi prices and other indicators, used to plan EMIs around your harvest.",
+        "retention": "Loan period"
+      }
+    },
+    "rights": {
+      "title": "Your rights under the DPDP Act 2023",
+      "access": {
+        "title": "Right to access (Sec 11)",
+        "body": "Ask for a summary of your data and who it was shared with."
+      },
+      "erasure": {
+        "title": "Right to erasure (Sec 12)",
+        "body": "Ask us to delete your data once it is no longer needed."
+      },
+      "grievance": {
+        "title": "Complaints (Sec 13)",
+        "body": "Our Data Protection Officer will resolve complaints; you can escalate to the Data Protection Board of India."
+      },
+      "nominate": {
+        "title": "Right to nominate (Sec 14)",
+        "body": "Name a person who can use these rights for you if you cannot."
+      },
+      "grievanceContact": "Grievance / Data Protection Officer: dpo@tvscredit.com · Toll-free 1800-425-4500"
+    },
+    "erase": {
+      "button": "Delete my data",
+      "title": "Delete my data",
+      "body": "This permanently deletes your field boundary, applications, satellite results and contact details from TVS Credit systems. A record that the deletion happened is kept, as RBI and PMLA rules require.",
+      "confirmWord": "DELETE",
+      "typeToConfirm": "Type {word} to confirm",
+      "reason": "Reason (optional)",
+      "confirm": "Delete permanently",
+      "working": "Deleting…",
+      "done": "Your data has been deleted ({count} applications removed)."
+    },
+    "errors": {
+      "load": "Could not load your consents. Please check your connection.",
+      "revoke": "Could not withdraw the consent. Please try again.",
+      "erase": "Could not delete your data. Please try again."
+    }
+  },
+  "kfs": {
+    "back": "Back to my decision",
+    "title": "Key Fact Statement (KFS)",
+    "subtitle": "Loan costs in one place, as required by the RBI Digital Lending rules · TVS Credit Services Ltd.",
+    "reference": "Application",
+    "borrower": "Borrower",
+    "product": "Loan product",
+    "tenure": "{months} months",
+    "sanction": "Approved amount",
+    "apr": "Yearly cost (APR)",
+    "aprNote": "Includes all charges",
+    "tableCaption": "Loan cost breakdown",
+    "item": "Item",
+    "value": "Amount",
+    "rows": {
+      "sanction": "Approved loan amount",
+      "interest": "Total interest for {months} months ({rate}% a year)",
+      "processing": "Processing fee (1.5%)",
+      "gst": "GST on processing fee (18%)",
+      "stamp": "Stamp duty",
+      "upfront": "Total deducted at the start (3 + 4 + 5)",
+      "net": "Amount paid into your bank account",
+      "total": "Total you will repay",
+      "apr": "Annual Percentage Rate (APR)"
+    },
+    "emi": {
+      "title": "Your EMI plan (matched to harvest)",
+      "note": "Small EMIs while the crop grows, larger EMIs after you sell your harvest. We remind you 7 days before each one.",
+      "harvest": "Harvest EMI",
+      "small": "Small EMI"
+    },
+    "coolingOff": {
+      "title": "3-day cooling-off period",
+      "body": "Within 3 days of receiving the money you can cancel the loan without any penalty, by returning the amount plus interest for those days."
+    },
+    "disbursal": {
+      "title": "Money goes only to your bank account",
+      "body": "The loan is paid directly into your own savings account and repaid only from it. No wallet or third-party account is used."
+    },
+    "grievance": {
+      "title": "Complaints and help",
+      "officer": "Grievance officer",
+      "contact": "Contact",
+      "tollFree": "toll-free",
+      "ombudsman": "RBI Ombudsman"
+    },
+    "speech": {
+      "intro": "Your approved loan is {amount}, for {months} months, at a yearly cost of {apr} percent including all charges.",
+      "net": "{amount} will be paid into your bank account.",
+      "emi": "{month}: {kind} of {amount}.",
+      "coolingOff": "You can cancel within 3 days of receiving the money without penalty."
+    }
+  }
+}

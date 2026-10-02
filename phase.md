@@ -105,14 +105,33 @@ Goal: turn the Round-2 prototype (all mock data, all client-side) into a secure,
 - Seed script `scripts/seed.ts` loads today's 4 demo applicants so the demo never looks empty.
 
 ### 1.3 Authentication & roles
-**What**: farmers log in with phone OTP; staff log in with email + role-based access.
+**What**: email-based login (Supabase Auth) for everyone, with role-based access for staff managed by a **single admin**.
+
+**Change (Oct 2026)**: phone OTP was replaced by email + password. Staff roles are no longer hard-coded — one admin assigns them.
 
 **How**
-- **Supabase Auth** (phone OTP via Twilio/MSG91 provider, email for staff) — or Auth.js if not using Supabase.
-- `proxy.ts` (Next 16 replacement for middleware — verify in docs) protects `/(staff)` routes; server-side role check in every staff page/action as well (never rely on the proxy alone).
-- Row-Level Security in Postgres: farmer can only read their own rows; staff by role.
+- **Supabase Auth, email + password.** Farmers self-register on `/login` and get role `farmer` automatically.
+- **Roles live in Supabase `app_metadata.role`**, which only the service-role key can write. `user_metadata` is editable by the user, so it is never used for authorization.
+- **One admin.** Created with `npx tsx scripts/create-admin.ts <email> ["Name"]`. The script refuses if another admin exists; `--replace` moves the role to the new account. The UI can never grant `admin`.
+- **Admin console `/admin/roles`:**
+  - invite staff by email (`inviteUserByEmail` → `/auth/set-password`);
+  - assign `farmer` / `field_officer` / `credit_officer` (field officers also get a district);
+  - see the role-change history. Every change is audit-logged with its before/after values.
+- **Data Access Layer** `app/lib/dal.ts`: `getSessionUser`, `requirePageRole` and `requireApiRole` run in every protected page and route handler. `proxy.ts` is only the optimistic first gate.
+- **Row access** (`app/lib/access.ts`):
+  - admin and credit officer see everything;
+  - field officer sees only their district;
+  - farmer sees only applications linked to their own account.
+- Postgres RLS policies: `drizzle/rls-policies.sql`.
 
-**Done when**: a farmer can log in, create a draft application saved in the DB; staff pages redirect when not logged in.
+| Role | Can do |
+|---|---|
+| `farmer` | apply, view own scoring/KFS, manage own consents, erase own data |
+| `field_officer` | staff desk + monitoring for assigned district |
+| `credit_officer` | full portfolio, audit trail, override decisions, delete applications |
+| `admin` (exactly one) | everything above + invite staff, assign roles, purge data |
+
+**Done when**: a farmer can log in and create an application saved in the DB; staff pages redirect when not logged in; only the admin can change roles.
 
 ---
 
@@ -325,14 +344,46 @@ All external calls happen **server-side** (keys never reach the browser) and are
 
 ## Progress tracker
 
-- [ ] Phase 0 — Setup & bug fixes
-- [ ] Phase 1 — Server components, shared layout, DB, auth
-- [ ] Phase 2 — Real data (plot capture, NDVI, weather, mandi, soil, sandbox KYC)
-- [ ] Phase 3 — Real scoring + SHAP + offer engine
-- [ ] Phase 4 — Security & RBI/DPDP compliance
+- [x] Phase 0 — Setup & bug fixes
+- [x] Phase 1 — Shared layout, DB schema, auth
+  - ✅ **PostGIS**: `plots.geom geometry(Polygon,4326)`; `ST_Area` measures plots server-side and rejects self-intersecting boundaries (`ST_IsValid`); nearest mandi via `ST_Distance`. DB rebuilt from the Drizzle schema with `npx tsx scripts/migrate-postgis.ts`. Fixed along the way: `audit_logs`/`consents` tables were missing, numeric columns were read as strings, and the old RLS let the anon key insert rows.
+  - ✅ **Drizzle ORM** implemented (dual-mode: Drizzle when DATABASE_URL set, in-memory fallback)
+  - ✅ **next/font/google** — Fonts migrated from CSS @import to next/font/google
+  - ✅ **Seed script** — `scripts/seed.ts` with 5 Indian farmer profiles
+  - ✅ **RLS policies** — `drizzle/rls-policies.sql` generated (run in Supabase SQL Editor)
+- [x] Phase 2 — Real data integrations:
+  - ✅ NDVI: Real Sentinel Hub Statistics API + calibrated model fallback + Redis cache (24h)
+  - ✅ Weather: Real NASA POWER + Open-Meteo APIs + Redis cache (3h)
+  - ✅ Soil: Real ISRIC SoilGrids API + ICAR fallback + Redis cache (24h)
+  - ⚠️ Mandi: eNAM portal attempted (data.gov.in unreachable) + APMC benchmark + Redis cache (12h)
+  - ⚠️ eKYC: Sandbox simulation (Setu/Digio not free) — labeled "SANDBOX"
+  - ✅ Pincode: Real India Post API
+  - ✅ Redis/Upstash: Connected for caching + rate limiting
+  - ✅ **7/12 OCR**: `POST /api/ocr` Tesseract.js (Hindi + English) + structured field extraction
+  - ✅ **QStash Job Queue**: Async scoring pipeline via Upstash QStash + sync fallback
+  - ✅ **SSE Live Progress**: `GET /api/applications/:id/progress` Server-Sent Events
+- [x] Phase 3 — Real scoring + SHAP + offer engine
+  - ✅ Rule-based SHAP attributions in TypeScript
+  - ✅ **FastAPI proxy**: `POST /api/ml-score` connects to Python geo-ml service with TS fallback
+- [x] Phase 4 — Security & RBI/DPDP compliance
+  - ✅ **Email auth + single-admin RBAC**: roles in `app_metadata`; admin console with email invites, role/district assignment and audit history
+  - ✅ **Server-side authorization on every API route and staff page** (`app/lib/dal.ts`); field officers scoped to their district; farmers only see their own applications
+  - ✅ Removed role-escalation paths: `/api/auth/session` used to set the role from the request body; roles came from user-editable `user_metadata`; first-signup claimed the hardcoded staff emails
+  - ✅ Removed the legacy JWT/OTP routes with hardcoded passwords, the `123456` OTP bypass and the default JWT secret, plus the `/api/test-supabase` debug endpoint (it leaked DB password hints)
+  - ✅ Zod on every mutating route; rate limits on submit, score, OCR, consent, erasure, session and admin
+  - ✅ CSP (no `unsafe-eval` in prod), HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy
+  - ✅ Audit log: login, submission, staff PII views, overrides (actor taken from the session), deletes, purges, role changes, invites, consent, erasure
+  - ✅ DPDP: consent view/withdraw and erasure tied to the signed-in user (previously anyone's data by phone number)
+  - ✅ Real QStash webhook signature verification (was "accept if header present")
+  - ✅ KFS + grievance officer details; `.github/` Dependabot + CI (`npm audit`, lint, typecheck, build)
+  - ⚠️ **PII column encryption**: `app/lib/encryption.ts` (AES-256-GCM) exists but isn't applied to stored columns yet (`users.phone` is `varchar(20)`). Needs a DB migration adding encrypted columns.
+  - ⚠️ Document images: OCR runs in memory and nothing is stored, so no private bucket is needed yet
 - [ ] Phase 5 — PWA & low latency
 - [ ] Phase 6 — Languages, voice, notifications
 - [ ] Phase 7 — Real AI assistant
 - [ ] Phase 8 — Staff dashboard & early warnings on real data
 - [ ] Phase 9 — Tests, CI, monitoring, deploy
 - [ ] Phase 10 — Finals demo prep
+
+
+

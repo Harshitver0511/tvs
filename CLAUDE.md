@@ -47,3 +47,10 @@ Next.js 16.3 (App Router, TS) — breaking changes vs. older Next; check `node_m
 - `walkthrough.md` is an earlier build report: its font list (Outfit/Inter) is stale and screenshot paths point to another machine.
 - `TVS_Credit_Smart_Lending_Deck.pptx` exists both at the project root and in `public/`.
 - Not a git repo.
+
+## Auth & RBAC (current — supersedes the "no backend" notes above)
+- Supabase email auth. Role = `app_metadata.role` only (`app/lib/roles.ts`); never trust `user_metadata`.
+- Exactly one admin, bootstrapped with `npx tsx scripts/create-admin.ts <email> ["Name"] [--replace]`; the admin assigns `farmer`/`field_officer`(+district)/`credit_officer` at `/admin/roles`.
+- Authorize via `app/lib/dal.ts` (`requirePageRole` in server pages, `requireApiRole` in route handlers) and `app/lib/access.ts` for row access. `proxy.ts` is only an optimistic gate.
+- Pages needing Leaflet: server `page.tsx` does the role check, then renders a `*Loader.tsx` client file that holds `dynamic(..., { ssr: false })`.
+

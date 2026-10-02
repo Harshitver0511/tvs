@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap');
+/* Fonts loaded via next/font/google in layout.tsx — Archivo Black kept as display fallback */
 @import "tailwindcss";
 
 :root {
@@ -11,13 +11,14 @@
   --pulse-green: #2ED573;
   --pulse-white: #FFFFFF;
 
-  --font-display: 'Archivo Black', 'Space Grotesk', sans-serif;
-  --font-body: 'Space Grotesk', sans-serif;
-  --font-mono: 'Space Mono', monospace;
+  /* Devanagari falls through to Noto Sans Devanagari (loaded in layout.tsx) */
+  --font-display: 'Archivo Black', var(--font-body), var(--font-devanagari), sans-serif;
+  --font-sans-stack: var(--font-body), var(--font-devanagari), sans-serif;
+  --font-mono-stack: var(--font-mono), var(--font-devanagari), monospace;
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-sans-stack);
   background-color: var(--pulse-cream);
   color: var(--pulse-black);
   -webkit-font-smoothing: antialiased;
@@ -136,4 +137,39 @@ body {
   border: 3px solid #000000 !important;
   box-shadow: 5px 5px 0px #000000 !important;
   z-index: 10;
+}
+
+/* Custom Leaflet Numbered Vertex Marker (Eliminates default Leaflet background/border) */
+.custom-vertex-marker-wrapper,
+.custom-live-gps-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+
+/* ─── Farmer-first UI (Phase 6) ─────────────────────────────────────────── */
+/* Touch targets ≥ 48px on farmer screens (WCAG 2.5.5 / Android guidance) */
+.farmer-ui button,
+.farmer-ui a.pulse-btn,
+.farmer-ui input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.farmer-ui select {
+  min-height: 48px;
+}
+.farmer-ui input,
+.farmer-ui select {
+  font-size: 16px; /* prevents iOS zoom-on-focus */
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid #1B4FD8;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
